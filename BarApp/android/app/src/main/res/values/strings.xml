@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BarApp</string>
+     <string name="fb_app_id">1255966681120645</string>
+    <string name="fb_login_protocol_scheme">fb1255966681120645</string>
+</resources>
