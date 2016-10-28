@@ -20,12 +20,22 @@ class Welcome extends Component {
 	      isOpen: false
 	    };
 	 }
-
 	   updateMenuState(isOpen) {
 	    this.setState({ isOpen, });
 	  }
+	  callApi(){
+		 return fetch('http://192.168.86.97:8080/api')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        	console.log(responseJson);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+	  }
 		 
 	render(){
+	  
 
 	
 //Se puede utilizar para hacer un menu y hacer un logout
@@ -57,9 +67,9 @@ class Welcome extends Component {
 	               this.setState({
 				      isOpen: !this.state.isOpen,
 				    });
-					
+					this.callApi();
 	              }}
-	              backgroundColor={"#3b3a30"} name={"menu"}>
+	              backgroundColor={"#0074D9"} name={"menu"}>
             </Icon.Button>
         	} 
         	/>

@@ -19,7 +19,6 @@ import {
 class Menu extends Component {
   render(){
     const window = Dimensions.get('window');
-    console.log(this.props.navigator)
     return (
         <View style={styles.menu}>
           <Text style={styles.fontStyle}>Item1</Text>
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: window.width,
     height: window.height,
-    backgroundColor: '#3b3a30',
+    backgroundColor: '#0074D9',
     padding: 20,
   },
   fontStyle: {
