@@ -17,17 +17,28 @@ class Welcome extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {
-	      isOpen: false
+	      isOpen: false,
+	      barName: ''
 	    };
 	 }
 	   updateMenuState(isOpen) {
 	    this.setState({ isOpen, });
 	  }
 	  callApi(){
-		 return fetch('http://192.168.86.97:8080/api')
+	  	//IP ADDRESS MARIA 192.168.1.5
+		 return fetch('http://192.168.86.97:8080/api/bar',{
+		 	 method: "GET",
+			 headers: {
+			 	'Accept': 'application/json',
+    			'Content-Type': 'application/json',
+			 }
+		 })
       .then((response) => response.json())
       .then((responseJson) => {
-        	console.log(responseJson);
+      		this.setState({
+				barName: responseJson[0].name,
+			});
+        	console.log(responseJson[0].name);
       })
       .catch((error) => {
         console.error(error);
@@ -74,7 +85,7 @@ class Welcome extends Component {
         	} 
         	/>
         	<View style={styles.container}>
-       			<Text>Este es el contenido</Text>
+       			<Text>Bienvenidos a la {this.state.barName}</Text>
             </View>
 
 

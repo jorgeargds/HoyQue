@@ -2,12 +2,6 @@ const express = require('express');
 const app = express();
 
 
-
-// var db ="";
-// var url = 'mongodb://localhost:27017/hoyqueApp';
-// var MongoClient = require('mongodb').MongoClient
-//   , assert = require('assert');
-
 var bodyParser = require('body-parser');
 
 // configure app to use bodyParser()
@@ -56,6 +50,14 @@ router.route('/bar')
             res.json({ message: 'Bar created!' });
         });
         
+    })
+     .get(function(req, res) {
+        Bar.find(function(err, bars) {
+            if (err)
+                res.send(err);
+
+            res.json(bars);
+        });
     });
 
 // more routes for our API will happen here
