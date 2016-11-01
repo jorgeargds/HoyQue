@@ -10,7 +10,7 @@ import
 
 import AppMenu from './AppMenu';
 
-class Welcome extends Component{
+class BarsView extends Component{
 
 	render(){
 		
@@ -22,4 +22,4 @@ class Welcome extends Component{
 }
 
 
-export default Welcome;
+export default BarsView;

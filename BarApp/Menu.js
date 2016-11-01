@@ -13,23 +13,38 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  TouchableHighlight
 } from 'react-native'
 
 class Menu extends Component {
+   static propTypes = {
+    onItemSelected: React.PropTypes.func.isRequired,
+  };
+
+  _goToBars(){
+    console.log('guat');
+  }
+
   render(){
     const window = Dimensions.get('window');
+  
     return (
         <View style={styles.menu}>
-          <Text style={styles.fontStyle}>Item1</Text>
+          <TouchableHighlight>
+            <Text style={styles.fontStyle}>Buscar</Text>
+          </TouchableHighlight>
+
+          <TouchableOpacity onPress={() => this.props.onItemSelected('Bares')}>
+
+            <Text style={styles.fontStyle}>Bares</Text>
+
+          </TouchableOpacity>
+           <Text style={styles.fontStyle}>Cafeterias</Text>
           
-           <Text style={styles.fontStyle}>Item2</Text>
+           <Text style={styles.fontStyle}>Restaurantes</Text>
           
-           <Text style={styles.fontStyle}>Item3</Text>
-          
-           <Text style={styles.fontStyle}>Item4</Text>
-          
-           <Text style={styles.fontStyle}>Item5</Text>
+           <Text style={styles.fontStyle}>Recomendaciones</Text>
           
         </View>
     );
@@ -41,11 +56,11 @@ const styles = StyleSheet.create({
     width: window.width,
     height: window.height,
     backgroundColor: '#0074D9',
-    padding: 20,
+   
   },
   fontStyle: {
     color : '#FFFFFF',
-    padding: 15
+    padding: 30
   }
 });
 

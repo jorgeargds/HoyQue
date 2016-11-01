@@ -7,8 +7,11 @@ import {
   BackAndroid
 } from 'react-native';
 
+
+
 import LoginAndroid from './LoginAndroid';
 import Welcome from './Welcome';
+import BarsView from './BarsView';
 
 export default class BarApp extends Component {
   render() {
@@ -39,6 +42,8 @@ export default class BarApp extends Component {
         return(<LoginAndroid navigator={navigator}/>);
       case 'Welcome' :
         return(<Welcome navigator={navigator} route={route} {...route.passProps}/>);
+         case 'Bares' :
+        return(<BarsView navigator={navigator} route={route}/>);
     }
   }
 }

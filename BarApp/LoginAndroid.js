@@ -21,8 +21,6 @@ class LoginAndroid extends Component {
     };
   }
   _handlePress(){
-
-    
     this.props.navigator.push({
       title: 'Welcome',
       passProps: {
