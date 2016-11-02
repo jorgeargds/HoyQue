@@ -47,14 +47,13 @@ class AppMenu extends Component {
 	 //   }
 
 	onMenuItemSelected = (item) => {
-	 	console.log(item);
+		this.setState({ isOpen: false})
     	this.props.navigator.push({
        		title: item
      	});
   	} 
 
 	render(){
-		console.log(this);
 		const titleConfig = {
    		 title: 'BarApp',
   		};

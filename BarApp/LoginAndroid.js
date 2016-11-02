@@ -8,7 +8,8 @@ import {
   TextInput,
   Image,
   BackAndroid,
-  Navigator
+  Navigator,
+  AsyncStorage
 } from 'react-native';
 import FBLoginView from './FBLoginView';
 
@@ -16,17 +17,48 @@ class LoginAndroid extends Component {
  constructor(props) {
     super(props);
     this.state = {
-      userName: 'Username',
-      pass: 'Password'
+      userName: '',
+      pass: ''
     };
   }
-  _handlePress(){
-    this.props.navigator.push({
-      title: 'Welcome',
-      passProps: {
-        userName: 'Jorge'
-      }  
+   _handlePress(email){
+    return fetch('http://192.168.86.108:8080/api/authenticate',{
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: '',
+      })
+   })
+    .then((response) => response.json())
+    .then(async (responseJson) => {
+      console.log(responseJson);
+      if(responseJson.message == 'Enjoy your token!'){
+        try{
+          await AsyncStorage.setItem('token', responseJson.token);
+          this.props.navigator.replacePrevious({
+            title: 'Welcome',
+            passProps: {
+              userName: this.state.userName
+            }   
+          });
+        }
+        catch (error) {
+          console.log('AsyncStorage error: ' + error.message);
+        }
+      }     
+    })
+    .catch((error) => {
+      console.error(error);
     });
+  }
+
+  async showItem(){
+  const token =  await AsyncStorage.getItem('token');
+  console.log(token);
   }
 
   render() {
@@ -48,18 +80,20 @@ class LoginAndroid extends Component {
         <View style ={styles.body}>
          <TextInput
           onChangeText={(userName) => this.setState({userName})}
+          placeholder = 'Correo'
           value={this.state.userName}
         />
         <TextInput
-        
           onChangeText={(pass) => this.setState({pass})}
+          secureTextEntry={true}
+          placeholder = 'Contraseña'
           value={this.state.pass}
         />
     
       <Button
         style={{ marginBottom: 15, marginTop: 10}}
         styleDisabled={{color: 'red'}}
-        onPress={() => this._handlePress()}>
+        onPress={() => this._handlePress(this.state.userName)}>
         LOG IN
       </Button>
     
