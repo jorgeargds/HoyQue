@@ -10,8 +10,9 @@ import {
 
 
 import LoginAndroid from './LoginAndroid';
-import Welcome from './Welcome';
-import BarsView from './BarsView';
+import Welcome from './app/views/Welcome';
+import BarsView from './app/views/BarsView';
+import BarView from './app/views/BarView';
 
 export default class BarApp extends Component {
   render() {
@@ -44,6 +45,8 @@ export default class BarApp extends Component {
         return(<Welcome navigator={navigator} route={route} {...route.passProps}/>);
          case 'Bares' :
         return(<BarsView navigator={navigator} route={route}/>);
+         case 'Bar' :
+        return(<BarView navigator={navigator} route={route}/>);
     }
   }
 }

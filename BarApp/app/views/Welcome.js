@@ -8,14 +8,14 @@ import
 	AsyncStorage
 } from 'react-native'
 
-import AppMenu from './AppMenu';
+import AppMenu from '../components/AppMenu';
 
 class Welcome extends Component{
 	constructor(props) {
     super(props);
     this.state = { userEmail: ''}
 	}
-  	//Se llama dos veces debido al this.state ERROR
+  	//Se llama dos veces debido al this.state ERROR se obtiene el usuario conectado al app
 	async _getUser(){
 	var myToken
  	myToken =  await AsyncStorage.getItem('token');
@@ -42,11 +42,12 @@ class Welcome extends Component{
   }
 
 	render(){
-		this._getUser();
-		console.log(this);
+		//this._getUser();
 		return(
 			<AppMenu navigator = {this.props.navigator}>
+     
 				<Text> Welcome {this.state.userEmail}</Text>
+        
 			</AppMenu>
 	)};
 }

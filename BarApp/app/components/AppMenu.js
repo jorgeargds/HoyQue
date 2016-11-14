@@ -3,7 +3,8 @@ import {
 	Text,
 	View,
 	Navigator,
-	StyleSheet
+	StyleSheet,
+	ScrollView
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -55,7 +56,7 @@ class AppMenu extends Component {
 
 	render(){
 		const titleConfig = {
-   		 title: 'BarApp',
+   		 title: 'HoyQueApp',
   		};
 
 		const menu = <Menu onItemSelected={this.onMenuItemSelected}/>;
@@ -66,6 +67,7 @@ class AppMenu extends Component {
 		 isOpen={this.state.isOpen}
 		 onChange={(isOpen) => this.updateMenuState(isOpen)}	
 		>
+		
 		<NavigationBar
         	title={titleConfig}
         	leftButton={
@@ -79,9 +81,13 @@ class AppMenu extends Component {
             </Icon.Button>
         	} 
         	/>
-        	<View style={styles.container}>
-        		 {this.props.children}
-        	</View>
+        	<ScrollView style={styles.container}>
+        		<View>
+	        		{this.props.children}
+	        	</View>
+	    
+	      		</ScrollView>
+	    	
         </SideMenu>
 		);
 	}
@@ -90,7 +96,8 @@ class AppMenu extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+  	flex: 1,
+    flexDirection: 'column',
     padding: 10,
     backgroundColor: '#FFFFFF',
   }
