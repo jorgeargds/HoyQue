@@ -5,13 +5,15 @@ import
 	View,
 	Text,
 	StyleSheet,
-	ScrollView
+	ScrollView,
+	Dimensions,
+	Image
 } from 'react-native';
 
 import NavigationBar from 'react-native-navbar';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ScrollableTabView,{DefaultTabBar, } from 'react-native-scrollable-tab-view';
-import TextMenu from '../components/TextMenu';
+
 
 import Perfil from './Perfil'
 class BarView extends Component {
@@ -21,9 +23,22 @@ class BarView extends Component {
 	}
 
 	render(){
+		const window = Dimensions.get('window');
 		const titleConfig = {
    		 title: 'HoyQueApp',
+   		 handler: () => this.props.navigator.resetTo({
+   		 	title: 'Welcome'
+   		 }),
   		};
+  		const items = [
+			{name: 'Vigorón', price: '$2', key: 1},{name: 'Arepa', price: '$5',	key: 2},{name: 'Funnel cake', price: '$6', key: 3}
+		];
+
+		const listItems = items.map((item) =>
+			//<TextMenu key={item.key} name={item.name} price={item.price}/>
+			<Text key={item.key}>{item.name}...........................{item.price}</Text>
+		);
+
 		return(
 		<View style={{flex:1}}>
 			<NavigationBar
@@ -42,17 +57,20 @@ class BarView extends Component {
 		    >			
 		    	<ScrollView tabLabel="Información" style={styles.tabView}>
 			        <View style={styles.card}>
-			          <Text>Friends</Text>
+			       	 <Image style={{width:window.width *1,height: window.height*0.25}} 
+			        	source={require('../../images/laconcha.jpg')}/>
+			          <Text style={{padding: 5}}>La concha de la lora </Text>
+			          
 			        </View>
 		      	</ScrollView>
 
 		      	<ScrollView tabLabel="Menú" style={styles.tabView}>
 		        <View style={styles.card}>
-		          <TextMenu name="gg" price="$2"/>
+				  {listItems}
 		        </View>
 			      </ScrollView>
 			</ScrollableTabView>
-		 </View>
+		</View>
 		  
         	
 
@@ -70,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: 'rgba(0,0,0,0.1)',
     margin: 5,
-    height: 150,
+    height: 300,
     padding: 15,
     shadowColor: '#ccc',
     shadowOffset: { width: 2, height: 2, },

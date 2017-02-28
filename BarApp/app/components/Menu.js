@@ -22,9 +22,7 @@ class Menu extends Component {
     onItemSelected: React.PropTypes.func.isRequired,
   };
 
-  _goToBars(){
-    console.log('guat');
-  }
+ 
 
   render(){
     const window = Dimensions.get('window');
