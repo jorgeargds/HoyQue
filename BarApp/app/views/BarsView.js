@@ -19,7 +19,7 @@ import Button from 'react-native-button';
 
 class BarsView extends Component{
 	
-	 _handlePress(){
+	 _handlePress(email){
 
         this.props.navigator.push({
             title: 'Bar'
@@ -51,7 +51,7 @@ class BarsView extends Component{
       			</Card>
       			<Card styles = {card}>
 			        <CardContent>
-			        	<Text style = {{textAlign: 'left', fontWeight: 'bold'}}>La concha de la lora</Text>
+			        	<Text style = {{textAlign: 'left'}}>La concha de la lora</Text>
 			        </CardContent>
 			        <CardImage>
 			        	<Image style={{width:window.width *1,height: window.height*0.25}} 
@@ -68,7 +68,7 @@ class BarsView extends Component{
       			</Card>
       			<Card styles = {card}>
 			        <CardContent>
-			        	<Text style = {{textAlign: 'left', fontWeight: 'bold'}}>La concha de la lora</Text>
+			        	<Text style = {{textAlign: 'left'}}>La concha de la lora</Text>
 			        </CardContent>
 			        <CardImage>
 			        	<Image style={{width:window.width *1,height: window.height*0.25}} 
@@ -85,24 +85,7 @@ class BarsView extends Component{
       			</Card>
       			<Card styles = {card}>
 			        <CardContent>
-			        	<Text style = {{textAlign: 'left', fontWeight: 'bold'}}>La concha de la lora</Text>
-			        </CardContent>
-			        <CardImage>
-			        	<Image style={{width:window.width *1,height: window.height*0.25}} 
-			        	source={require('../../images/laconcha.jpg')}/>
-			        </CardImage>
-			        <CardAction >
-			          <Button
-			            style={styles.button}
-			            onPress={() => {this._handlePress()}}>
-			            Ver
-			          </Button>
-			          
-			        </CardAction>
-      			</Card>
-      			<Card styles = {card}>
-			        <CardContent>
-			        	<Text style = {{textAlign: 'left', fontWeight: 'bold'}}>La concha de la lora</Text>
+			        	<Text style = {{textAlign: 'left'}}>La concha de la lora</Text>
 			        </CardContent>
 			        <CardImage>
 			        	<Image style={{width:window.width *1,height: window.height*0.25}} 

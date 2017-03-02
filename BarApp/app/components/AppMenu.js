@@ -28,24 +28,24 @@ class AppMenu extends Component {
 	 }
 	 //  callApi(){
 	 //  	//IP ADDRESS MARIA 192.168.1.5
-		 // return fetch('http://192.168.86.108:8080/api/bar',{
-		 // 	 method: "GET",
-			//  headers: {
-			//  	'Accept': 'application/json',
-   //  			'Content-Type': 'application/json',
-			//  }
-		 // })
-   //    .then((response) => response.json())
-   //    .then((responseJson) => {
-   //    		this.setState({
-			// 	barName: responseJson[0].name,
-			// });
-   //      	console.log(responseJson[0].name);
-   //    })
-   //    .catch((error) => {
-   //      console.error(error);
-   //    });
-	  //  }
+		//  return fetch('http://192.168.86.108:8080/api/bar',{
+		//  	 method: "GET",
+		// 	 headers: {
+		// 	 	'Accept': 'application/json',
+  //   			'Content-Type': 'application/json',
+		// 	 }
+		//  })
+  //     .then((response) => response.json())
+  //     .then((responseJson) => {
+  //     		this.setState({
+		// 		barName: responseJson[0].name,
+		// 	});
+  //       	console.log(responseJson[0].name);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+	 //   }
 
 	onMenuItemSelected = (item) => {
 		this.setState({ isOpen: false})
@@ -53,12 +53,10 @@ class AppMenu extends Component {
        		title: item
      	});
   	} 
+
 	render(){
 		const titleConfig = {
    		 title: 'HoyQueApp',
-   		 handler: () => this.props.navigator.resetTo({
-   		 	title: 'Welcome'
-   		 }),
   		};
 
 		const menu = <Menu onItemSelected={this.onMenuItemSelected}/>;
